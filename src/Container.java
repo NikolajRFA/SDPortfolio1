@@ -8,10 +8,13 @@ public class Container extends Vessel {
         this.CAPACITY = capacity;
     }
 
-    public boolean loadingCargo(int numContainers) {
-        if (containersOnBoard + numContainers <= CAPACITY) {
-            containersOnBoard += numContainers;
-            return true;
+    public boolean loadingCargo(Cargo cargo) {
+        if (cargo instanceof Cont) {
+            if (containersOnBoard + ((Cont) cargo).getQuantity() <= CAPACITY) {
+                containersOnBoard += ((Cont) cargo).getQuantity();
+                return true;
+            }
+            return false;
         }
         return false;
     }

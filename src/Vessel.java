@@ -11,6 +11,7 @@ public abstract class Vessel {
     }
 
     public abstract double utilityLevelOfCapacity();
+    public abstract boolean loadingCargo(Cargo cargo);
     public void sailTo(String coords) {}
     public String getCoordinates(){return null;}
     public static Vessel findSuitableVessel(Vessel[] vessels, String vesselType, int spaceNeeded) {
