@@ -18,11 +18,14 @@ public class Tanker extends Vessel {
         }
     }
 
-    public boolean loadingCargo(int compartmentIndex, int litersToFill) {
-        if (compartmentIndex > tanks.length) {
-            System.out.println("Can't load into that compartment!");
-            return false;
-        } else return tanks[compartmentIndex].fill(litersToFill);
+    public boolean loadingCargo(Cargo cargo) {
+        if (cargo instanceof TankerCargo thisCargo) {
+            if (thisCargo.getCOMPARTMENT_INDEX() > tanks.length) {
+                System.out.println("Can't load into that compartment!");
+                return false;
+            } else return tanks[thisCargo.getCOMPARTMENT_INDEX()].fill(thisCargo.getLITERS_TO_FILL());
+        }
+        return false;
     }
 
     @Override

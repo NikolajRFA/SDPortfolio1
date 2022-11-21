@@ -6,14 +6,14 @@ class TankerTest {
     @Test
     void loadTank() {
         Tanker t = new Tanker(20, 30, 2.3f, "DK", 8);
-        boolean loadWentWell = t.loadingCargo(0, 23);
+        boolean loadWentWell = t.loadingCargo(new TankerCargo(0, 23));
         assertTrue(loadWentWell);
     }
 
     @Test
     void cantOverfill() {
         Tanker t = new Tanker(20, 30, 2.3f, "DK", 8);
-        boolean loadWentWell = t.loadingCargo(0, 101);
+        boolean loadWentWell = t.loadingCargo(new TankerCargo(0, 101));
         assertFalse(loadWentWell);
     }
 
@@ -27,8 +27,8 @@ class TankerTest {
     @Test
     void computeFractionOfTanksUsed() {
         Tanker t = new Tanker(20, 30, 2.3f, "DK", 8);
-        t.loadingCargo(0, 20);
-        t.loadingCargo(1, 30);
+        t.loadingCargo(new TankerCargo(0, 20));
+        t.loadingCargo(new TankerCargo(1, 30));
         assertEquals(0.25, t.utilityLevelOfCapacity(), 0.001);
     }
 

@@ -8,10 +8,11 @@ public class Container extends Vessel {
         this.CAPACITY = capacity;
     }
 
+    @Override
     public boolean loadingCargo(Cargo cargo) {
-        if (cargo instanceof Cont) {
-            if (containersOnBoard + ((Cont) cargo).getQuantity() <= CAPACITY) {
-                containersOnBoard += ((Cont) cargo).getQuantity();
+        if (cargo instanceof ContainerCargo thisCargo) {
+            if (containersOnBoard + thisCargo.getQUANTITY() <= CAPACITY) {
+                containersOnBoard += thisCargo.getQUANTITY();
                 return true;
             }
             return false;

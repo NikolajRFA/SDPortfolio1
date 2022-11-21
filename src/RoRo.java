@@ -8,15 +8,18 @@ public class RoRo extends Vessel{
         this.LANE_METERS = laneMeters;
     }
 
-    public boolean loadingCargo(int cars, int trucks) {
-        int TRUCK_LENGTH = 30; // meters
-        int CAR_LENGTH = 8; // meters
-        int carsAndTrucksLaneMeters = cars * CAR_LENGTH + trucks * TRUCK_LENGTH;
-        if (carsAndTrucksLaneMeters + usedLaneMeters > LANE_METERS) {
-            return false;
+    public boolean loadingCargo(Cargo cargo) {
+        if (cargo instanceof RoRoCargo thisCargo) {
+            int TRUCK_LENGTH = 30; // meters
+            int CAR_LENGTH = 8; // meters
+            int carsAndTrucksLaneMeters = thisCargo.getCARS() * CAR_LENGTH + thisCargo.getTRUCKS() * TRUCK_LENGTH;
+            if (carsAndTrucksLaneMeters + usedLaneMeters > LANE_METERS) {
+                return false;
+            }
+            usedLaneMeters = carsAndTrucksLaneMeters;
+            return true;
         }
-        usedLaneMeters = carsAndTrucksLaneMeters;
-        return true;
+        return false;
     }
     @Override
     public double utilityLevelOfCapacity() {
