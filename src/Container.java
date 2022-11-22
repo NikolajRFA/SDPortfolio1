@@ -10,12 +10,13 @@ public class Container extends Vessel {
 
     @Override
     public boolean loadingCargo(Cargo cargo) {
+        // Check if the cargo is compatible.
         if (cargo instanceof ContainerCargo thisCargo) {
+            // If sufficient space is available.
             if (containersOnBoard + thisCargo.getQUANTITY() <= CAPACITY) {
                 containersOnBoard += thisCargo.getQUANTITY();
                 return true;
             }
-            return false;
         }
         return false;
     }

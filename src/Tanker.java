@@ -19,6 +19,7 @@ public class Tanker extends Vessel {
     }
 
     public boolean loadingCargo(Cargo cargo) {
+        // Check if the cargo is compatible.
         if (cargo instanceof TankerCargo thisCargo) {
             if (thisCargo.getCOMPARTMENT_INDEX() > tanks.length) {
                 System.out.println("Can't load into that compartment!");

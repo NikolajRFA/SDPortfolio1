@@ -9,10 +9,12 @@ public class RoRo extends Vessel{
     }
 
     public boolean loadingCargo(Cargo cargo) {
+        // Check if the cargo is compatible.
         if (cargo instanceof RoRoCargo thisCargo) {
             int TRUCK_LENGTH = 30; // meters
             int CAR_LENGTH = 8; // meters
             int carsAndTrucksLaneMeters = thisCargo.getCARS() * CAR_LENGTH + thisCargo.getTRUCKS() * TRUCK_LENGTH;
+            // If not enough space
             if (carsAndTrucksLaneMeters + usedLaneMeters > LANE_METERS) {
                 return false;
             }
